@@ -60,7 +60,6 @@ public class HappinessIndexControl extends Region {
         initializeDrawingPane();
         layoutParts();
         setupEventHandlers();
-        setupValueChangeListeners();
         setupBinding();
     }
 
@@ -71,11 +70,10 @@ public class HappinessIndexControl extends Region {
         String stylesheet = getClass().getResource("style.css").toExternalForm();
         getStylesheets().add(stylesheet);
 
-        getStyleClass().add("happiness-index");  // Todo: an den Namen der Klasse (des CustomControls) anpassen
+        getStyleClass().add("happiness-index");
     }
 
     private void initializeParts() {
-        //ToDo: alle deklarierten Parts initialisieren
         double center = ARTBOARD_WIDTH * 0.5;
 
         double startX = BORDER_PADDING;
@@ -96,15 +94,12 @@ public class HappinessIndexControl extends Region {
     }
 
     private void layoutParts() {
-        // ToDo: alle Parts zur drawingPane hinzufügen
         drawingPane.getChildren().addAll(curve);
 
         getChildren().add(drawingPane);
     }
 
     private void setupEventHandlers() {
-        //ToDo: bei Bedarf ergänzen
-
         curve.setOnMouseDragged((t) -> {
             double mouseY = t.getY();
 
@@ -115,14 +110,8 @@ public class HappinessIndexControl extends Region {
         });
     }
 
-    private void setupValueChangeListeners() {
-        //ToDo: bei Bedarf ergänzen
-
-    }
 
     private void setupBinding() {
-        //ToDo dieses Binding ersetzen
-
         curve.startYProperty().bind(drawingPane.heightProperty().divide(2));
         curve.endYProperty().bind(drawingPane.heightProperty().divide(2));
         curve.endXProperty().bind(drawingPane.widthProperty().subtract(BORDER_PADDING));
@@ -147,7 +136,7 @@ public class HappinessIndexControl extends Region {
         }, value));
     }
 
-    //resize by scaling
+    // resize by scaling
     @Override
     protected void layoutChildren() {
         super.layoutChildren();
@@ -205,8 +194,6 @@ public class HappinessIndexControl extends Region {
     }
 
     // alle getter und setter  (generiert via "Code -> Generate... -> Getter and Setter)
-
-    // ToDo: ersetzen durch die Getter und Setter Ihres CustomControls
     public double getValue() {
         return value.get();
     }

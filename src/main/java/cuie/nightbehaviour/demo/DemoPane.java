@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 import cuie.nightbehaviour.HappinessIndexControl;
+import javafx.util.StringConverter;
 
 /**
  *
@@ -34,11 +35,36 @@ public class DemoPane extends BorderPane {
         cc = new HappinessIndexControl();
 
         slider = new Slider(0.0,1.0,0.5);
+        slider.setMajorTickUnit(.5d);
+        slider.setLabelFormatter(new StringConverter<Double>() {
+            @Override public String toString(Double object) {
+                if (object < 0.33) {
+                    return "sad";
+                } else if (object < 0.66) {
+                    return "neutral";
+                } else {
+                    return "happy";
+                }
+            }
+
+            @Override public Double fromString(String string) {
+                switch (string) {
+                case "sad":
+                    return 0d;
+                case "neutral":
+                    return 0.5d;
+                case "happy":
+                    return 1d;
+                default:
+                    return 0d;
+                }
+            }
+        });
         slider.setShowTickLabels(true);
     }
 
     private void layoutControls() {
-        VBox controlPane = new VBox(new Label("SimpleControl Properties"),
+        VBox controlPane = new VBox(new Label("HappinessIndexControl Properties"),
                                     slider);
         controlPane.setPadding(new Insets(0, 50, 0, 50));
         controlPane.setSpacing(10);
