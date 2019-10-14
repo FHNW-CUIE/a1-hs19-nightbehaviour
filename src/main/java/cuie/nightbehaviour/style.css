@@ -1,0 +1,5 @@
+.happiness-index .curve {
+    -fx-fill: none;
+    -fx-stroke-width: 8px;
+    -fx-stroke-line-cap: round;
+}

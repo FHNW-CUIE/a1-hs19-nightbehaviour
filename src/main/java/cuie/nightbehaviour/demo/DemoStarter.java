@@ -1,4 +1,4 @@
-package cuie.assignment_1.template.demo;
+package cuie.nightbehaviour.demo;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

@@ -1,4 +1,4 @@
-package cuie.assignment_1.template.demo;
+package cuie.nightbehaviour.demo;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
